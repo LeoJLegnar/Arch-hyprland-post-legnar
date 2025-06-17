@@ -56,8 +56,8 @@ yay -S --noconfirm vencord-desktop-bin
 echo "🎨 Instalando drivers de Xencelabs..."
 yay -S --noconfirm xencelabs-driver
 
-echo "🌈 Instalando programa para RGB y ventiladores..."
-yay -S --noconfirm openrgb
+#echo "🌈 Instalando programa para RGB y ventiladores..."
+#yay -S --noconfirm openrgb
 
 echo "🎵 Configurando Spicetify..."
 yay -S --noconfirm spicetify-cli
