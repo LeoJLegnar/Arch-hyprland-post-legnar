@@ -112,18 +112,4 @@ bind=SUPER,CTRL,R,exec,cool-retro-term
 bind=SUPER,CTRL,E,exec,flatpak run com.endel.Endel
 EOF
 
-echo "🚀 Optimizando para hardware y gaming..."
-sudo pacman -S --noconfirm amd-ucode cpupower
-sudo systemctl enable cpupower
-sudo bash -c 'echo "governor="performance"' > /etc/default/cpupower
-echo "vm.nr_hugepages=128" | sudo tee /etc/sysctl.d/99-hugepages.conf
-sudo sysctl -p /etc/sysctl.d/99-hugepages.conf
-echo "fs.inotify.max_user_watches=524288" | sudo tee /etc/sysctl.d/40-max-user-watches.conf
-sudo sysctl --system
-sudo pacman -S --noconfirm gamemode lib32-gamemode
-sudo pacman -S --noconfirm mangohud lib32-mangohud
-sudo pacman -S --noconfirm wine wine-gecko wine-mono lib32-vulkan-radeon vulkan-radeon
-sudo sysctl -w net.core.rmem_max=26214400
-sudo sysctl -w net.core.wmem_max=26214400
-
 echo "✅ Script completado con éxito. Reinicia tu sistema para aplicar todos los cambios."

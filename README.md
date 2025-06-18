@@ -1,8 +1,8 @@
 # 🛠️ Script de Posinstalación para Arch Linux + Hyprland
 
-Este script automatiza la configuración inicial de una instalación limpia de Arch Linux con el entorno gráfico Hyprland. Incluye instalación de aplicaciones populares para creatividad, desarrollo, gaming, productividad y optimizaciones de sistema.
+Este script automatiza la configuración inicial de una instalación limpia de Arch Linux con el entorno gráfico Hyprland. Incluye instalación de aplicaciones populares para creatividad, desarrollo, gaming, productividad y configuraciones generales.
 
-> 💡 Especialmente diseñado para PCs con hardware AMD moderno, como Ryzen 9 y GPU Radeon RX.
+> 💡 Especialmente diseñado para PCs con hardware AMD moderno, como Ryzen 7 y GPU Radeon RX.
 
 ---
 
@@ -11,10 +11,11 @@ Este script automatiza la configuración inicial de una instalación limpia de A
 - Herramientas base (yay, flatpak, pamac)
 - Creatividad: Krita, Blender, WPS Office
 - Desarrollo: VS Code
-- Streaming y multimedia: OBS, VLC, Spotify + Spicetify, AFFiNE
-- Gaming: Steam, Heroic, Minecraft Launcher, Lutris, Bottles, Gamemode, MangoHUD
-- Sistema: Htop, Btop, Fastfetch, KDE Connect, OpenRGB
+- Streaming y multimedia: OBS, VLC, Spotify + Spicetify, AFFiNE, Endel
+- Gaming: Steam, Heroic, Minecraft Launcher, Lutris, Bottles
+- Sistema: Htop, Btop, Fastfetch, KDE Connect, CoolerControl
 - Comunicación: Discord + Vencord
+- Terminal retro: Cool-retro-term
 - Drivers de Xencelabs
 
 ---
@@ -25,7 +26,7 @@ Este script automatiza la configuración inicial de una instalación limpia de A
 - Teclado inglés con ñ
 - Dotfiles de End-4
 - Atajos personalizados SUPER+CTRL+[letra]
-- Optimizaciones CPU, RAM y red
+- (Opcional) Script separado para optimizaciones de CPU, RAM, SSD y gaming
 
 ---
 
@@ -37,13 +38,31 @@ Este script automatiza la configuración inicial de una instalación limpia de A
 bash <(curl -s https://raw.githubusercontent.com/LeoJLegnar/Arch-hyprland-post-legnar/main/postinstall.sh)
 ```
 
-### 🛠️ O clonar y editar:
+### 🛠️ O clonar:
 
 ```bash
 git clone https://github.com/LeoJLegnar/Arch-hyprland-post-legnar.git
 cd Arch-hyprland-post-legnar
 chmod +x postinstall.sh
 ./postinstall.sh
+```
+
+---
+
+## ⚙️ Script opcional de optimización
+
+Puedes ejecutar un script separado que realiza ajustes para aprovechar mejor tu hardware:
+
+- Mejora el uso de los 64 GB de RAM con ZRAM
+- Reduce escrituras al SSD NVMe
+- Activa TRIM y reduce logs
+- Optimiza la CPU y habilita modo "performance"
+- Incluye Gamemode, Wine y MangoHUD para gaming
+
+### Ejecutar:
+
+```bash
+bash <(curl -s https://raw.githubusercontent.com/LeoJLegnar/Arch-hyprland-post-legnar/main/optimizaciones.sh)
 ```
 
 ---
@@ -82,4 +101,4 @@ Los siguientes atajos fueron añadidos automáticamente al archivo `hyprland.con
 
 ## 🧑‍💻 Autor
 
-Hecho con ❤️ por Chat Gpt y revisado por Leo J. Legnar
+Hecho con ❤️ por Chat GPT y revisado por Leo J. Legnar
