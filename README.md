@@ -41,7 +41,7 @@ bash <(curl -s https://raw.githubusercontent.com/LeoJLegnar/Arch-hyprland-post-l
 
 ```bash
 git clone https://github.com/LeoJLegnar/Arch-hyprland-post-legnar.git
-cd tu_repositorio
+cd Arch-hyprland-post-legnar
 chmod +x postinstall.sh
 ./postinstall.sh
 ```
