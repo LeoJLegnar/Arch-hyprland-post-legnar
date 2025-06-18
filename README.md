@@ -41,7 +41,7 @@ bash <(curl -s https://raw.githubusercontent.com/LeoJLegnar/Arch-hyprland-post-l
 
 ```bash
 git clone https://github.com/LeoJLegnar/Arch-hyprland-post-legnar.git
-cd Arch-hyprland-post-legnar
+cd tu_repositorio
 chmod +x postinstall.sh
 ./postinstall.sh
 ```
@@ -75,6 +75,8 @@ Los siguientes atajos fueron añadidos automáticamente al archivo `hyprland.con
 | SUPER + CTRL + C   | VLC                       |
 | SUPER + CTRL + F   | Fastfetch                 |
 | SUPER + CTRL + A   | AFFiNE (Flatpak)          |
+| SUPER + CTRL + R   | Cool retro term           |
+| SUPER + CTRL + E   | Endel (Flatpak)           |
 
 ---
 

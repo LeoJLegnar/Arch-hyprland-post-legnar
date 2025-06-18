@@ -63,6 +63,12 @@ echo "🎵 Configurando Spicetify..."
 yay -S --noconfirm spicetify-cli
 spicetify backup apply || true
 
+echo "🖥️ Instalando cool-retro-term..."
+yay -S --noconfirm cool-retro-term
+
+echo "🎧 Instalando Endel (versión Flatpak)..."
+flatpak install -y com.endel.Endel
+
 echo "📝 Instalando AFFiNE..."
 flatpak install -y flathub cloud.affine.APP
 
@@ -102,6 +108,8 @@ bind=SUPER,CTRL,P,exec,spotify
 bind=SUPER,CTRL,C,exec,vlc
 bind=SUPER,CTRL,F,exec,fastfetch
 bind=SUPER,CTRL,A,exec,flatpak run cloud.affine.APP
+bind=SUPER,CTRL,R,exec,cool-retro-term
+bind=SUPER,CTRL,E,exec,flatpak run com.endel.Endel
 EOF
 
 echo "🚀 Optimizando para hardware y gaming..."
