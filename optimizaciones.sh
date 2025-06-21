@@ -37,6 +37,10 @@ echo "net.core.rmem_max=26214400" | sudo tee -a /etc/sysctl.d/99-gaming.conf
 echo "net.core.wmem_max=26214400" | sudo tee -a /etc/sysctl.d/99-gaming.conf
 sudo sysctl --system
 
+# 🕹️ Mejorar compatibilidad con juegos que usan muchos mappings (ej: Unity, Unreal, Proton)
+echo "vm.max_map_count = 2147483642" | sudo tee /etc/sysctl.d/80-gamecompatibility.conf
+sudo sysctl --system
+
 # CPU: modo rendimiento
 sudo pacman -S --noconfirm amd-ucode cpupower thermald
 echo 'governor="performance"' | sudo tee /etc/default/cpupower
