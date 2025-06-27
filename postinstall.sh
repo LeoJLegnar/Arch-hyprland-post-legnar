@@ -43,7 +43,9 @@ yay -S --noconfirm visual-studio-code-bin
 
 echo "📹 Instalando herramientas de streaming y multimedia..."
 sudo pacman -S --noconfirm obs-studio vlc
-flatpak install -y flathub com.spotify.Client
+
+echo "🎶 Instalando YouTube Music..."
+yay -S --noconfirm youtube-music-bin
 
 echo "🎮 Instalando apps de gaming..."
 sudo pacman -S --noconfirm steam lutris
@@ -55,13 +57,6 @@ yay -S --noconfirm vencord-desktop-bin
 
 echo "🎨 Instalando drivers de Xencelabs..."
 yay -S --noconfirm xencelabs-driver
-
-#echo "🌈 Instalando programa para RGB y ventiladores..."
-#yay -S --noconfirm openrgb
-
-echo "🎵 Configurando Spicetify..."
-yay -S --noconfirm spicetify-cli
-spicetify backup apply || true
 
 echo "🖥️ Instalando cool-retro-term..."
 yay -S --noconfirm cool-retro-term
@@ -104,7 +99,7 @@ bind=SUPER,CTRL,M,exec,minecraft-launcher
 bind=SUPER,CTRL,L,exec,lutris
 bind=SUPER,CTRL,T,exec,bottles
 bind=SUPER,CTRL,D,exec,discord
-bind=SUPER,CTRL,P,exec,spotify
+bind=SUPER,CTRL,Y,exec,youtube-music
 bind=SUPER,CTRL,C,exec,vlc
 bind=SUPER,CTRL,F,exec,fastfetch
 bind=SUPER,CTRL,A,exec,flatpak run cloud.affine.APP

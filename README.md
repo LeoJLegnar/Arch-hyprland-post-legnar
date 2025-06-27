@@ -2,7 +2,7 @@
 
 Este script automatiza la configuración inicial de una instalación limpia de Arch Linux con el entorno gráfico Hyprland. Incluye instalación de aplicaciones populares para creatividad, desarrollo, gaming, productividad y configuraciones generales.
 
-> 💡 Especialmente diseñado para PCs con hardware AMD moderno, como Ryzen 7 y GPU Radeon RX.
+> 💡 Especialmente diseñado para PCs con hardware AMD o NVIDIA modernos.
 
 ---
 
@@ -11,11 +11,12 @@ Este script automatiza la configuración inicial de una instalación limpia de A
 - Herramientas base (yay, flatpak, pamac)
 - Creatividad: Krita, Blender, WPS Office
 - Desarrollo: VS Code
-- Streaming y multimedia: OBS, VLC, Spotify + Spicetify, AFFiNE, Endel
+- Streaming y multimedia: OBS, VLC, YouTube Music (AUR)
 - Gaming: Steam, Heroic, Minecraft Launcher, Lutris, Bottles
 - Sistema: Htop, Btop, Fastfetch, KDE Connect, CoolerControl
 - Comunicación: Discord + Vencord
 - Terminal retro: Cool-retro-term
+- Productividad: Endel, AFFiNE
 - Drivers de Xencelabs
 
 ---
@@ -38,7 +39,7 @@ Este script automatiza la configuración inicial de una instalación limpia de A
 bash <(curl -s https://raw.githubusercontent.com/LeoJLegnar/Arch-hyprland-post-legnar/main/postinstall.sh)
 ```
 
-### 🛠️ O clonar:
+### 🛠️ O clonar y editar:
 
 ```bash
 git clone https://github.com/LeoJLegnar/Arch-hyprland-post-legnar.git
@@ -56,8 +57,9 @@ Puedes ejecutar un script separado que realiza ajustes para aprovechar mejor tu 
 - Mejora el uso de los 64 GB de RAM con ZRAM
 - Reduce escrituras al SSD NVMe
 - Activa TRIM y reduce logs
-- Optimiza la CPU y habilita modo "performance"
+- Optimiza la CPU y habilita modo "powersave"
 - Incluye Gamemode, Wine y MangoHUD para gaming
+- Compatible con NVIDIA o AMD
 
 ### Ejecutar:
 
@@ -75,7 +77,7 @@ Este script sobrescribe configuraciones (resolv.conf, hyprland.conf). Haz respal
 
 ## 🎯 Atajos de teclado personalizados
 
-Los siguientes atajos fueron añadidos automáticamente al archivo `hyprland.conf`. Todos usan la combinación `SUPER + CTRL + [Letra]` para abrir rápidamente las aplicaciones más usadas:
+Todos los atajos usan la combinación `SUPER + CTRL + [Letra]` para abrir rápidamente las aplicaciones más usadas:
 
 | Atajo              | Aplicación               |
 |--------------------|---------------------------|
@@ -90,7 +92,7 @@ Los siguientes atajos fueron añadidos automáticamente al archivo `hyprland.con
 | SUPER + CTRL + L   | Lutris                    |
 | SUPER + CTRL + T   | Bottles                   |
 | SUPER + CTRL + D   | Discord                   |
-| SUPER + CTRL + P   | Spotify                   |
+| SUPER + CTRL + Y   | YouTube Music             |
 | SUPER + CTRL + C   | VLC                       |
 | SUPER + CTRL + F   | Fastfetch                 |
 | SUPER + CTRL + A   | AFFiNE (Flatpak)          |
