@@ -1,59 +1,110 @@
 #!/bin/bash
+set -e
 
-echo "🧠 Optimizando RAM, SSD y rendimiento general..."
+echo "🚀 Aplicando optimizaciones para Ryzen 7 7800X3D + RTX 5080..."
 
-# ZRAM
-sudo pacman -S --noconfirm zram-generator
-sudo tee /etc/systemd/zram-generator.conf > /dev/null <<EOF
+# --------------------------
+# 🧠 Governor de CPU y energía
+# --------------------------
+echo "🧠 Estableciendo governor de CPU a schedutil..."
+sudo pacman -S --noconfirm cpupower
+sudo systemctl enable --now cpupower.service
+sudo bash -c 'echo "governor=\"schedutil\"" > /etc/default/cpupower'
+
+echo "💤 Activando ahorro energético con TLP..."
+sudo pacman -S --noconfirm tlp
+sudo systemctl enable --now tlp.service
+
+# --------------------------
+# 🌡️ Control de temperatura y sensores
+# --------------------------
+echo "🌡️ Instalando y configurando sensores..."
+sudo pacman -S --noconfirm lm_sensors
+sudo sensors-detect --auto || true
+
+# --------------------------
+# ❄️ Ajustes térmicos para ITX con AIO 140mm
+# --------------------------
+echo "🧊 Configurando límites térmicos con RyzenAdj..."
+yay -S --noconfirm ryzenadj-git
+sudo tee /etc/systemd/system/ryzenadj.service >/dev/null <<EOF
+[Unit]
+Description=RyzenAdj undervolt and temp cap
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/ryzenadj --tctl-temp=80 --stapm-limit=88000 --fast-limit=88000 --slow-limit=75000
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl enable ryzenadj.service
+
+# --------------------------
+# 🖥️ NVIDIA RTX 5080 Optimización
+# --------------------------
+echo "🖥️ Instalando driver NVIDIA y configurando entorno..."
+sudo pacman -S --noconfirm nvidia-dkms nvidia-utils nvidia-settings
+sudo bash -c 'echo "options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_EnableGpuFirmware=0" > /etc/modprobe.d/nvidia.conf'
+
+mkdir -p ~/.config/hypr
+cat <<EOF >> ~/.config/hypr/hyprland.conf
+
+# NVIDIA: Fix tearing y habilita triple buffer
+env = __GL_VRR_ALLOWED=1
+env = KWIN_TRIPLE_BUFFER=1
+env = __GL_GSYNC_ALLOWED=1
+env = WLR_DRM_NO_ATOMIC=1
+env = GBM_BACKEND=nvidia-drm
+env = LIBVA_DRIVER_NAME=nvidia
+env = XDG_SESSION_TYPE=wayland
+env = WLR_NO_HARDWARE_CURSORS=1
+EOF
+
+# --------------------------
+# 💾 SSD NVMe Optimización
+# --------------------------
+echo "💾 Activando TRIM y mejoras para NVMe..."
+sudo systemctl enable fstrim.timer
+
+if mount | grep -q "btrfs"; then
+  echo "📦 Activando compresión zstd para Btrfs..."
+  sudo btrfs property set -ts / compress zstd
+fi
+
+# --------------------------
+# 🧠 RAM optimización con ZRAM
+# --------------------------
+echo "🧠 Activando ZRAM..."
+yay -S --noconfirm systemd-zram-generator
+sudo tee /etc/systemd/zram-generator.conf >/dev/null <<EOF
 [zram0]
 zram-size = ram
 compression-algorithm = zstd
 EOF
-sudo systemctl daemon-reexec
-sudo systemctl restart systemd-zram-setup@zram0.service
 
-# Swapfile mínimo
-sudo swapoff -a
-sudo sed -i '/swap/d' /etc/fstab
-sudo dd if=/dev/zero of=/swapfile bs=1M count=1024
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-echo '/swapfile none swap defaults 0 0' | sudo tee -a /etc/fstab
-sudo swapon /swapfile
+# --------------------------
+# 🎮 Gaming Tools
+# --------------------------
+echo "🎮 Instalando herramientas de optimización para gaming..."
+yay -S --noconfirm gamemode mangohud wine winetricks vkd3d
 
-# TRIM automático
-sudo systemctl enable fstrim.timer
+echo "🎮 Configurando Gamemode..."
+sudo systemctl enable --now gamemoded.service
 
-# Limitar logs de journald
-sudo sed -i 's/^#SystemMaxUse=.*/SystemMaxUse=100M/' /etc/systemd/journald.conf
-sudo sed -i 's/^#SystemKeepFree=.*/SystemKeepFree=50M/' /etc/systemd/journald.conf
-sudo sed -i 's/^#RuntimeMaxUse=.*/RuntimeMaxUse=50M/' /etc/systemd/journald.conf
-sudo systemctl restart systemd-journald
+# --------------------------
+# 🧼 Pacman tweaks y limpieza
+# --------------------------
+echo "🧼 Mejorando pacman.conf..."
+sudo sed -i 's/^#ParallelDownloads.*/ParallelDownloads = 10/' /etc/pacman.conf
+sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
+sudo sed -i 's/^#CheckSpace/CheckSpace/' /etc/pacman.conf
+sudo sed -i 's/^#VerbosePkgLists/VerbosePkgLists/' /etc/pacman.conf
+sudo bash -c 'echo "ILoveCandy" >> /etc/pacman.conf'
 
-# Sysctl tuning
-echo "vm.nr_hugepages=64" | sudo tee /etc/sysctl.d/99-hugepages.conf
-echo "fs.inotify.max_user_watches=524288" | sudo tee /etc/sysctl.d/40-max-user-watches.conf
-echo "net.core.rmem_max=26214400" | sudo tee -a /etc/sysctl.d/99-gaming.conf
-echo "net.core.wmem_max=26214400" | sudo tee -a /etc/sysctl.d/99-gaming.conf
-sudo sysctl --system
+echo "🧹 Limpiando paquetes huérfanos..."
+yay -Yc --noconfirm || true
 
-# 🕹️ Mejorar compatibilidad con juegos que usan muchos mappings (ej: Unity, Unreal, Proton)
-echo "vm.max_map_count = 2147483642" | sudo tee /etc/sysctl.d/80-gamecompatibility.conf
-sudo sysctl --system
-
-# CPU: modo rendimiento
-sudo pacman -S --noconfirm amd-ucode cpupower thermald
-echo 'governor="performance"' | sudo tee /etc/default/cpupower
-sudo systemctl enable cpupower
-sudo systemctl enable --now thermald
-
-# Gaming tools
-sudo pacman -S --noconfirm gamemode lib32-gamemode mangohud lib32-mangohud wine-staging lib32-wine-staging vulkan-radeon lib32-vulkan-radeon
-
-# 📌 Recomendación de montaje (manual)
-echo "⚠️ Recomendación: revisa tu /etc/fstab y ajusta opciones de montaje:"
-echo "  Para ext4 ➜ defaults,noatime"
-echo "  Para btrfs ➜ rw,relatime,discard=async,compress=zstd:1,ssd"
-echo "Puedes verificar tu sistema de archivos con: findmnt /"
-
-echo "✅ Optimizaciones aplicadas. Reboot recomendado."
+echo "✅ Optimización completada. Reinicia para aplicar todos los cambios."

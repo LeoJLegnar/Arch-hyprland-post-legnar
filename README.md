@@ -27,7 +27,10 @@ Este script automatiza la configuración inicial de una instalación limpia de A
 - Teclado inglés con ñ
 - Dotfiles de End-4
 - Atajos personalizados SUPER+CTRL+[letra]
-- (Opcional) Script separado para optimizaciones de CPU, RAM, SSD y gaming
+- Script **secundario** para optimizaciones avanzadas (CPU, GPU, SSD, RAM, gaming)
+
+👉 Consulta el README del script de optimización aquí:  
+[📘 optimizaciones.md](./optimizaciones.md)
 
 ---
 
@@ -46,25 +49,6 @@ git clone https://github.com/LeoJLegnar/Arch-hyprland-post-legnar.git
 cd Arch-hyprland-post-legnar
 chmod +x postinstall.sh
 ./postinstall.sh
-```
-
----
-
-## ⚙️ Script opcional de optimización
-
-Puedes ejecutar un script separado que realiza ajustes para aprovechar mejor tu hardware:
-
-- Mejora el uso de los 64 GB de RAM con ZRAM
-- Reduce escrituras al SSD NVMe
-- Activa TRIM y reduce logs
-- Optimiza la CPU y habilita modo "powersave"
-- Incluye Gamemode, Wine y MangoHUD para gaming
-- Compatible con NVIDIA o AMD
-
-### Ejecutar:
-
-```bash
-bash <(curl -s https://raw.githubusercontent.com/LeoJLegnar/Arch-hyprland-post-legnar/main/optimizaciones.sh)
 ```
 
 ---
@@ -103,4 +87,4 @@ Todos los atajos usan la combinación `SUPER + CTRL + [Letra]` para abrir rápid
 
 ## 🧑‍💻 Autor
 
-Hecho con ❤️ por Chat GPT y revisado por Leo J. Legnar
+Hecho con ❤️ por ChatGPT y revisado por Leo J. Legnar
