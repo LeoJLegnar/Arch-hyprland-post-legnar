@@ -58,9 +58,6 @@ yay -S --noconfirm vencord-desktop-bin
 echo "🎨 Instalando drivers de Xencelabs..."
 yay -S --noconfirm xencelabs-driver
 
-echo "🖥️ Instalando cool-retro-term..."
-yay -S --noconfirm cool-retro-term
-
 echo "🎧 Instalando Endel (versión Flatpak)..."
 flatpak install -y com.endel.Endel
 
@@ -103,7 +100,6 @@ bind=SUPER,CTRL,Y,exec,youtube-music
 bind=SUPER,CTRL,C,exec,vlc
 bind=SUPER,CTRL,F,exec,fastfetch
 bind=SUPER,CTRL,A,exec,flatpak run cloud.affine.APP
-bind=SUPER,CTRL,R,exec,cool-retro-term
 bind=SUPER,CTRL,E,exec,flatpak run com.endel.Endel
 EOF
 
