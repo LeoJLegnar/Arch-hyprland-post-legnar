@@ -1,40 +1,40 @@
 #!/bin/bash
 set -e
 
-echo "🚀 Aplicando optimizaciones para Ryzen 7 7800X3D + RTX 5080..."
+echo "🚀 Aplicando optimizaciones para Ryzen 9 7950X + RTX 5080..."
 
 # --------------------------
 # 🧠 Governor de CPU y energía
 # --------------------------
-echo "🧠 Estableciendo governor de CPU a schedutil..."
+echo "🧠 Instalando cpupower con governor schedutil..."
 sudo pacman -S --noconfirm cpupower
 sudo systemctl enable --now cpupower.service
-sudo bash -c 'echo "governor=\"schedutil\"" > /etc/default/cpupower'
+echo 'governor="schedutil"' | sudo tee /etc/default/cpupower
 
-echo "💤 Activando ahorro energético con TLP..."
-sudo pacman -S --noconfirm tlp
-sudo systemctl enable --now tlp.service
+echo "⚡ Activando auto-cpufreq para mejor gestión energética..."
+yay -S --noconfirm auto-cpufreq
+sudo auto-cpufreq --install
 
 # --------------------------
-# 🌡️ Control de temperatura y sensores
+# 🌡️ Sensores
 # --------------------------
-echo "🌡️ Instalando y configurando sensores..."
+echo "🌡️ Instalando sensores..."
 sudo pacman -S --noconfirm lm_sensors
 sudo sensors-detect --auto || true
 
 # --------------------------
-# ❄️ Ajustes térmicos para ITX con AIO 140mm
+# ❄️ RyzenAdj para el 7950X con AIO 360mm
 # --------------------------
-echo "🧊 Configurando límites térmicos con RyzenAdj..."
+echo "❄️ Configurando RyzenAdj..."
 yay -S --noconfirm ryzenadj-git
 sudo tee /etc/systemd/system/ryzenadj.service >/dev/null <<EOF
 [Unit]
-Description=RyzenAdj undervolt and temp cap
+Description=RyzenAdj optimización térmica/potencia
 After=multi-user.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/ryzenadj --tctl-temp=80 --stapm-limit=88000 --fast-limit=88000 --slow-limit=75000
+ExecStart=/usr/bin/ryzenadj --tctl-temp=90 --stapm-limit=105000 --fast-limit=105000 --slow-limit=95000
 
 [Install]
 WantedBy=multi-user.target
@@ -43,16 +43,18 @@ EOF
 sudo systemctl enable ryzenadj.service
 
 # --------------------------
-# 🖥️ NVIDIA RTX 5080 Optimización
+# 🖥️ NVIDIA RTX 5080
 # --------------------------
-echo "🖥️ Instalando driver NVIDIA y configurando entorno..."
+echo "🖥️ Instalando driver NVIDIA y config Wayland..."
 sudo pacman -S --noconfirm nvidia-dkms nvidia-utils nvidia-settings
-sudo bash -c 'echo "options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_EnableGpuFirmware=0" > /etc/modprobe.d/nvidia.conf'
+sudo tee /etc/modprobe.d/nvidia.conf >/dev/null <<EOF
+options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_EnableGpuFirmware=0
+EOF
 
 mkdir -p ~/.config/hypr
 cat <<EOF >> ~/.config/hypr/hyprland.conf
 
-# NVIDIA: Fix tearing y habilita triple buffer
+# NVIDIA: Wayland fixes
 env = __GL_VRR_ALLOWED=1
 env = KWIN_TRIPLE_BUFFER=1
 env = __GL_GSYNC_ALLOWED=1
@@ -64,47 +66,45 @@ env = WLR_NO_HARDWARE_CURSORS=1
 EOF
 
 # --------------------------
-# 💾 SSD NVMe Optimización
+# 💾 SSD NVMe
 # --------------------------
-echo "💾 Activando TRIM y mejoras para NVMe..."
+echo "💾 Activando TRIM para SSD..."
 sudo systemctl enable fstrim.timer
 
 if mount | grep -q "btrfs"; then
-  echo "📦 Activando compresión zstd para Btrfs..."
+  echo "📦 Activando compresión ZSTD en Btrfs..."
   sudo btrfs property set -ts / compress zstd
 fi
 
 # --------------------------
-# 🧠 RAM optimización con ZRAM
+# 🧠 ZRAM
 # --------------------------
-echo "🧠 Activando ZRAM..."
+echo "🧠 Activando ZRAM (uso eficiente de RAM)..."
 yay -S --noconfirm systemd-zram-generator
 sudo tee /etc/systemd/zram-generator.conf >/dev/null <<EOF
 [zram0]
-zram-size = ram
+zram-size = 32G
 compression-algorithm = zstd
 EOF
 
 # --------------------------
-# 🎮 Gaming Tools
+# 🎮 Gaming
 # --------------------------
-echo "🎮 Instalando herramientas de optimización para gaming..."
+echo "🎮 Instalando herramientas de gaming..."
 yay -S --noconfirm gamemode mangohud wine winetricks vkd3d
-
-echo "🎮 Configurando Gamemode..."
 sudo systemctl enable --now gamemoded.service
 
 # --------------------------
-# 🧼 Pacman tweaks y limpieza
+# 🧼 Pacman y limpieza
 # --------------------------
-echo "🧼 Mejorando pacman.conf..."
+echo "🧼 Optimizando pacman.conf..."
 sudo sed -i 's/^#ParallelDownloads.*/ParallelDownloads = 10/' /etc/pacman.conf
 sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
 sudo sed -i 's/^#CheckSpace/CheckSpace/' /etc/pacman.conf
 sudo sed -i 's/^#VerbosePkgLists/VerbosePkgLists/' /etc/pacman.conf
-sudo bash -c 'echo "ILoveCandy" >> /etc/pacman.conf'
+sudo grep -q "ILoveCandy" /etc/pacman.conf || echo "ILoveCandy" | sudo tee -a /etc/pacman.conf
 
 echo "🧹 Limpiando paquetes huérfanos..."
 yay -Yc --noconfirm || true
 
-echo "✅ Optimización completada. Reinicia para aplicar todos los cambios."
+echo "✅ Optimización aplicada para el nuevo ensamble. Reinicia y disfruta tu bestia silenciosa."

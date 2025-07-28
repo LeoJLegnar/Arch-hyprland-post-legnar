@@ -1,8 +1,8 @@
 # ⚙️ Script de Optimización para Arch Linux (optimizaciones.sh)
 
-Este script aplica optimizaciones avanzadas para equipos con hardware de gama alta, como Ryzen 7 7800X3D, NVIDIA RTX 5080 y almacenamiento NVMe rápido. Está enfocado en setups ITX con refrigeración limitada y uso multitarea, creativo y gaming.
+Este script aplica optimizaciones avanzadas para equipos con hardware de gama alta como Ryzen 9 7950X, NVIDIA RTX 5080 y almacenamiento NVMe PCIe 4.0. Está diseñado para estaciones de trabajo potentes con refrigeración líquida y uso intensivo creativo/gaming.
 
-> ⚠️ **Advertencia:** Este script modifica configuraciones de bajo nivel, incluye servicios y da acceso a herramientas como `RyzenAdj` que pueden afectar estabilidad si se usan incorrectamente. Solo ejecútalo si sabes lo que haces o has leído este archivo completo.
+> ⚠️ **Advertencia:** Este script modifica configuraciones de bajo nivel, incluyendo servicios de energía y límites térmicos. Solo ejecútalo si sabes lo que haces o has leído este archivo completo.
 
 ---
 
@@ -11,47 +11,47 @@ Este script aplica optimizaciones avanzadas para equipos con hardware de gama al
 ### 🧠 Rendimiento & Energía
 
 - Cambia el governor de CPU a `schedutil`
-- Activa TLP para ahorro energético pasivo
-- Aplica límites térmicos y de consumo con `RyzenAdj` (80 °C máx por defecto)
+- Activa `auto-cpufreq` para ajuste dinámico de frecuencias
+- Configura `RyzenAdj` para controlar temperatura y consumo (hasta 90 °C con AIO 360 mm)
 
 ### 🌡️ Control térmico
 
-- Instala y configura `lm_sensors`
-- Controla temperaturas máximas en setups ITX con solo 1 ventilador
+- Instala y configura `lm_sensors` para lectura de temperaturas
+- Detecta sensores automáticamente
 
 ### 💾 Almacenamiento
 
 - Activa TRIM periódico para SSDs NVMe
-- Si detecta Btrfs, activa compresión `zstd` (requiere sistema con Btrfs)
+- Si detecta Btrfs, aplica compresión `zstd`
 
 ### 🧠 RAM y Swap
 
-- Activa `ZRAM` para crear swap comprimido en RAM, útil incluso con 96 GB
+- Activa `ZRAM` con compresión `zstd`
+- Usa 32 GB de RAM comprimida como swap rápida
 
 ### 🖥️ NVIDIA RTX 5080
 
 - Instala driver `nvidia-dkms`
-- Aplica ajustes especiales para evitar tearing en Wayland (Hyprland)
+- Ajustes para evitar tearing en Wayland (Hyprland)
 
 ### 🎮 Gaming
 
 - Instala:
   - `gamemode`: prioriza recursos en juegos
-  - `mangohud`: muestra FPS, carga GPU/CPU, etc.
-  - `wine`, `winetricks`, `vkd3d`: soporte para juegos de Windows
+  - `mangohud`: monitor en pantalla con FPS, temperaturas, carga
+  - `wine`, `winetricks`, `vkd3d`: compatibilidad con juegos de Windows
 
 ### 🧼 Sistema y limpieza
 
-- Mejora `pacman.conf` con descargas paralelas, colores, verbose
-- Limpia dependencias huérfanas (`yay -Yc`)
-- Reduce logs innecesarios
+- Optimiza `pacman.conf`: descargas paralelas, colores, verbose, candy
+- Limpia paquetes huérfanos (`yay -Yc`)
 
 ---
 
 ## 🧪 ¿Cuándo ejecutar?
 
-Solo después de correr el script principal de postinstalación (`postinstall.sh`).  
-Este script **no instala aplicaciones**, solo optimiza el sistema.
+Solo después de correr el script principal de post-instalación (`postinstall.sh`).  
+Este script **no instala programas principales**, solo optimiza el sistema.
 
 ---
 
