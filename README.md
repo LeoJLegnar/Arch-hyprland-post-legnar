@@ -41,7 +41,7 @@ Este script automatiza la configuración inicial de una instalación limpia de A
 bash <(curl -s https://raw.githubusercontent.com/LeoJLegnar/Arch-hyprland-post-legnar/main/postinstall.sh)
 ```
 
-### 🛠️ O clonar y editar:
+### 🛠️ O clonar:
 
 ```bash
 git clone https://github.com/LeoJLegnar/Arch-hyprland-post-legnar.git
