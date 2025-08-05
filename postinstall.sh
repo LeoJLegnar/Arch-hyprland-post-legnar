@@ -58,9 +58,6 @@ yay -S --noconfirm vencord-desktop-bin
 echo "🎨 Instalando drivers de Xencelabs..."
 yay -S --noconfirm xencelabs-driver
 
-echo "🎧 Instalando Endel (versión Flatpak)..."
-flatpak install -y com.endel.Endel
-
 echo "📝 Instalando AFFiNE..."
 flatpak install -y flathub cloud.affine.APP
 
@@ -100,7 +97,6 @@ bind=SUPER,CTRL,Y,exec,youtube-music
 bind=SUPER,CTRL,C,exec,vlc
 bind=SUPER,CTRL,F,exec,fastfetch
 bind=SUPER,CTRL,A,exec,flatpak run cloud.affine.APP
-bind=SUPER,CTRL,E,exec,flatpak run com.endel.Endel
 EOF
 
 echo "✅ Script completado con éxito. Reinicia tu sistema para aplicar todos los cambios."
