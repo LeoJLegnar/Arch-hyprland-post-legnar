@@ -15,7 +15,7 @@ Este script automatiza la configuración inicial de una instalación limpia de A
 - Gaming: Steam, Heroic, Minecraft Launcher, Lutris, Bottles
 - Sistema: Htop, Btop, Fastfetch, KDE Connect, CoolerControl
 - Comunicación: Discord + Vencord
-- Productividad: Endel, AFFiNE
+- Productividad: AFFiNE
 - Drivers de Xencelabs
 
 ---
@@ -79,7 +79,6 @@ Todos los atajos usan la combinación `SUPER + CTRL + [Letra]` para abrir rápid
 | SUPER + CTRL + C   | VLC                       |
 | SUPER + CTRL + F   | Fastfetch                 |
 | SUPER + CTRL + A   | AFFiNE (Flatpak)          |
-| SUPER + CTRL + E   | Endel (Flatpak)           |
 
 ---
 
