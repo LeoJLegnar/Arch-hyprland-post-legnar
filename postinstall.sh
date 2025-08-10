@@ -65,7 +65,7 @@ echo "📊 Instalando herramientas de sistema..."
 sudo pacman -S --noconfirm htop btop fastfetch
 
 echo "📂 Instalando dotfiles de End-4..."
-bash <(curl -s https://raw.githubusercontent.com/End-4/dotfiles/main/install.sh)
+bash <(curl -s "https://end-4.github.io/dots-hyprland-wiki/setup.sh")
 
 echo "🌐 Configurando DNS de AdGuard..."
 sudo bash -c 'echo "nameserver 94.140.14.14" > /etc/resolv.conf'
