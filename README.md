@@ -79,6 +79,7 @@ Todos los atajos usan la combinación `SUPER + CTRL + [Letra]` para abrir rápid
 | SUPER + CTRL + C   | VLC                       |
 | SUPER + CTRL + F   | Fastfetch                 |
 | SUPER + CTRL + A   | AFFiNE (Flatpak)          |
+| SUPER + CTRL + R   | Shiru                     |
 
 ---
 
