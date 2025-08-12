@@ -39,7 +39,10 @@ echo "🎨 Instalando programas creativos..."
 yay -S --noconfirm krita blender wps-office
 
 echo "💻 Instalando herramientas de desarrollo..."
-yay -S --noconfirm visual-studio-code-bin
+yay -S visual-studio-code-bin
+
+echo "🇯🇵 tus monas chinas sucio otaku..."
+yay -S shiru
 
 echo "📹 Instalando herramientas de streaming y multimedia..."
 sudo pacman -S --noconfirm obs-studio vlc
@@ -97,6 +100,7 @@ bind=SUPER,CTRL,Y,exec,youtube-music
 bind=SUPER,CTRL,C,exec,vlc
 bind=SUPER,CTRL,F,exec,fastfetch
 bind=SUPER,CTRL,A,exec,flatpak run cloud.affine.APP
+bind=SUPER,CTRL,E,exec,shiru
 EOF
 
 echo "✅ Script completado con éxito. Reinicia tu sistema para aplicar todos los cambios."
