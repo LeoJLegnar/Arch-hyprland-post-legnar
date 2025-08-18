@@ -10,7 +10,6 @@ Este script automatiza la configuración inicial de una instalación limpia de A
 
 - Herramientas base (yay, flatpak, pamac)
 - Creatividad: Krita, Blender, WPS Office
-- Desarrollo: VS Code
 - Streaming y multimedia: OBS, VLC, YouTube Music (AUR)
 - Gaming: Steam, Heroic, Minecraft Launcher, Lutris, Bottles
 - Sistema: Htop, Btop, Fastfetch, KDE Connect, CoolerControl
@@ -67,7 +66,6 @@ Todos los atajos usan la combinación `SUPER + CTRL + [Letra]` para abrir rápid
 | SUPER + CTRL + K   | Krita                     |
 | SUPER + CTRL + B   | Blender                   |
 | SUPER + CTRL + W   | WPS Office                |
-| SUPER + CTRL + V   | Visual Studio Code        |
 | SUPER + CTRL + O   | OBS Studio                |
 | SUPER + CTRL + S   | Steam                     |
 | SUPER + CTRL + H   | Heroic Games Launcher     |
@@ -76,10 +74,10 @@ Todos los atajos usan la combinación `SUPER + CTRL + [Letra]` para abrir rápid
 | SUPER + CTRL + T   | Bottles                   |
 | SUPER + CTRL + D   | Discord                   |
 | SUPER + CTRL + Y   | YouTube Music             |
-| SUPER + CTRL + C   | VLC                       |
+| SUPER + CTRL + V   | VLC                       |
 | SUPER + CTRL + F   | Fastfetch                 |
-| SUPER + CTRL + A   | AFFiNE (Flatpak)          |
-| SUPER + CTRL + R   | Shiru                     |
+| SUPER + CTRL + C   | AFFiNE (Flatpak)          |
+| SUPER + CTRL + A   | Shiru                     |
 
 ---
 
