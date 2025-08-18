@@ -71,11 +71,11 @@ echo "⌨️ Configurando teclado inglés con ñ..."
 localectl set-x11-keymap us "" "" "grp:alt_shift_toggle,lv3:ralt_switch"
 
 echo "🔡 Añadiendo keybinds personalizados..."
-CONFIG_FILE="$HOME/.config/hypr/hyprland.conf"
-mkdir -p "$(dirname "$CONFIG_FILE")"
-touch "$CONFIG_FILE"
+KEYBINDS_FILE="$HOME/.config/hypr/hyprland/keybinds.conf"
+mkdir -p "$(dirname "$KEYBINDS_FILE")"
+touch "$KEYBINDS_FILE"
 
-cat <<EOF >> "$CONFIG_FILE"
+cat <<EOF >> "$KEYBINDS_FILE"
 
 # Atajos personalizados para apps (SUPER+CTRL+letra)
 bind=SUPER,CTRL,K,exec,krita
