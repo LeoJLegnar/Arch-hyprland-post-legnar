@@ -10,14 +10,7 @@ sudo pacman -S --noconfirm reflector
 sudo reflector --latest 10 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
 echo "📦 Instalando paquetes base..."
-sudo pacman -S --noconfirm \
-  git base-devel curl wget unzip \
-  hyprland xdg-desktop-portal-hyprland \
-  polkit-kde-agent pipewire pipewire-pulse wireplumber \
-  wl-clipboard grim slurp wf-recorder swaylock swayidle \
-  qt5-wayland qt6-wayland qt5ct qt6ct \
-  gvfs gvfs-mtp thunar thunar-volman thunar-archive-plugin \
-  gnome-disk-utility file-roller gparted
+sudo pacman -S --noconfirm  curl wget gcc make cmake nano vim
 
 echo "⚙️ Instalando yay..."
 if ! command -v yay &>/dev/null; then
@@ -102,5 +95,9 @@ bind=SUPER,CTRL,F,exec,fastfetch
 bind=SUPER,CTRL,A,exec,flatpak run cloud.affine.APP
 bind=SUPER,CTRL,E,exec,shiru
 EOF
+
+echo "🖥️ Instalando y activando SDDM..."
+sudo pacman -S --noconfirm sddm
+sudo systemctl enable sddm
 
 echo "✅ Script completado con éxito. Reinicia tu sistema para aplicar todos los cambios."
