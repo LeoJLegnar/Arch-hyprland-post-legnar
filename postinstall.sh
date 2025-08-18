@@ -78,22 +78,22 @@ touch "$KEYBINDS_FILE"
 cat <<EOF >> "$KEYBINDS_FILE"
 
 # Atajos personalizados para apps (SUPER+CTRL+letra)
-bind=SUPER,CTRL,K,exec,krita
-bind=SUPER,CTRL,B,exec,blender
-bind=SUPER,CTRL,W,exec,wps
-bind=SUPER,CTRL,V,exec,code
-bind=SUPER,CTRL,O,exec,obs
-bind=SUPER,CTRL,S,exec,steam
-bind=SUPER,CTRL,H,exec,heroic
-bind=SUPER,CTRL,M,exec,minecraft-launcher
-bind=SUPER,CTRL,L,exec,lutris
-bind=SUPER,CTRL,T,exec,bottles
-bind=SUPER,CTRL,D,exec,discord
-bind=SUPER,CTRL,Y,exec,youtube-music
-bind=SUPER,CTRL,C,exec,vlc
-bind=SUPER,CTRL,F,exec,fastfetch
-bind=SUPER,CTRL,A,exec,flatpak run cloud.affine.APP
-bind=SUPER,CTRL,E,exec,shiru
+bind = Super+Ctrl, K, exec, Krita
+bind = Super+Ctrl, B, exec, Blender
+bind = Super+Ctrl, W, exec, Wps
+bind = Super+Ctrl, V, exec, Code
+bind = Super+Ctrl, O, exec, Obs
+bind = Super+Ctrl, S, exec, Steam
+bind = Super+Ctrl, H, exec, Heroic
+bind = Super+Ctrl, M, exec, Minecraft-launcher
+bind = Super+Ctrl, L, exec, Lutris
+bind = Super+Ctrl, T, exec, Bottles
+bind = Super+Ctrl, D, exec, Discord
+bind = Super+Ctrl, Y, exec, Youtube-music
+bind = Super+Ctrl, C, exec, Vlc
+bind = Super+Ctrl, F, exec, Fastfetch
+bind = Super+Ctrl, A, exec, flatpak run cloud.affine.APP
+bind = Super+Ctrl, E, exec, Shiru
 EOF
 
 echo "🖥️ Instalando y activando SDDM..."
