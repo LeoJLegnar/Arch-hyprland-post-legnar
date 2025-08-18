@@ -1,6 +1,6 @@
 # 🛠️ Script de Posinstalación para Arch Linux + Hyprland
 
-Este script automatiza la configuración inicial de una instalación limpia de Arch Linux con el entorno gráfico Hyprland. Incluye instalación de aplicaciones populares para creatividad, desarrollo, gaming, productividad y configuraciones generales.
+Este script automatiza la configuración inicial de una instalación limpia de Arch Linux con el entorno gráfico Hyprland. Incluye instalación de aplicaciones populares para creatividad, gaming, productividad y configuraciones generales.
 
 > 💡 Especialmente diseñado para PCs con hardware AMD o NVIDIA modernos.
 
