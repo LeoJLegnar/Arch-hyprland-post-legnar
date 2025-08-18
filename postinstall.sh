@@ -31,9 +31,6 @@ yay -S --noconfirm ttf-ms-fonts
 echo "🎨 Instalando programas creativos..."
 yay -S --noconfirm krita blender wps-office
 
-echo "💻 Instalando herramientas de desarrollo..."
-yay -S visual-studio-code-bin
-
 echo "🇯🇵 tus monas chinas sucio otaku..."
 yay -S shiru
 
@@ -81,7 +78,7 @@ cat <<EOF >> "$KEYBINDS_FILE"
 bind = Super+Ctrl, K, exec, Krita
 bind = Super+Ctrl, B, exec, Blender
 bind = Super+Ctrl, W, exec, Wps
-bind = Super+Ctrl, V, exec, Code
+bind = Super+Ctrl, V, exec, Vlc
 bind = Super+Ctrl, O, exec, Obs
 bind = Super+Ctrl, S, exec, Steam
 bind = Super+Ctrl, H, exec, Heroic
@@ -90,10 +87,9 @@ bind = Super+Ctrl, L, exec, Lutris
 bind = Super+Ctrl, T, exec, Bottles
 bind = Super+Ctrl, D, exec, Discord
 bind = Super+Ctrl, Y, exec, Youtube-music
-bind = Super+Ctrl, C, exec, Vlc
 bind = Super+Ctrl, F, exec, Fastfetch
-bind = Super+Ctrl, A, exec, flatpak run cloud.affine.APP
-bind = Super+Ctrl, E, exec, Shiru
+bind = Super+Ctrl, C, exec, flatpak run cloud.affine.APP
+bind = Super+Ctrl, A, exec, Shiru
 EOF
 
 echo "🖥️ Instalando y activando SDDM..."
