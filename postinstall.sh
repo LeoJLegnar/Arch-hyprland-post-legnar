@@ -69,7 +69,7 @@ sudo reflector --latest 10 --protocol https --sort rate --save /etc/pacman.d/mir
 # 📦 Paquetes base
 # ────────────────────────────────
 echo "📦 Instalando paquetes base..."
-sudo pacman -S --noconfirm curl wget gcc make cmake nano vim
+sudo pacman -S --noconfirm curl wget gcc make cmake nano vim firefox
 
 # ────────────────────────────────
 # ⚙️ Yay (AUR Helper)
