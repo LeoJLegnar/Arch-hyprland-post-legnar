@@ -8,14 +8,15 @@ Este script automatiza la configuración inicial de una instalación limpia de A
 
 ## 📦 Programas que instala
 
-- Herramientas base (yay, flatpak, pamac)
+- Herramientas base (yay, flatpak, flathub, pamac)
 - Creatividad: Krita, Blender, WPS Office
-- Streaming y multimedia: OBS, VLC, YouTube Music (AUR)
+- Streaming y multimedia: OBS, VLC, YouTube Music (AUR), stremio, komikku
 - Gaming: Steam, Heroic, Minecraft Launcher, Lutris, Bottles
-- Sistema: Htop, Btop, Fastfetch, KDE Connect, CoolerControl
+- Sistema: Htop, Btop, Fastfetch, KDE Connect, Scrcpy
 - Comunicación: Discord + Vencord
 - Productividad: AFFiNE
 - Drivers de Xencelabs
+- seguridad: KeePass
 
 ---
 
@@ -78,6 +79,10 @@ Todos los atajos usan la combinación `SUPER + CTRL + [Letra]` para abrir rápid
 | SUPER + CTRL + F   | Fastfetch                 |
 | SUPER + CTRL + C   | AFFiNE (Flatpak)          |
 | SUPER + CTRL + A   | Shiru                     |
+| SUPER + CTRL + G   | KeePass                   |
+| SUPER + CTRL + R   | Stremio                   |
+| SUPER + CTRL + N   | Komikku (Flathub) |
+| SUPER + CTRL + P   | Scrcpy                    |
 
 ---
 
