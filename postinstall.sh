@@ -89,6 +89,9 @@ echo "📥 Instalando flatpak y pamac..."
 sudo pacman -S --noconfirm flatpak
 yay -S --noconfirm pamac-aur
 
+echo "🌍 Añadiendo Flathub como repositorio de Flatpak..."
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
 # ────────────────────────────────
 # 🔤 Fuentes
 # ────────────────────────────────
@@ -114,6 +117,12 @@ sudo pacman -S --noconfirm obs-studio vlc
 echo "🎶 Instalando YouTube Music..."
 yay -S --noconfirm youtube-music-bin
 
+echo "📺 Instalando Stremio..."
+yay -S --noconfirm stremio
+
+echo "📚 Instalando Komikku (lector de manga)..."
+flatpak install -y flathub info.febvre.Komikku
+
 # ────────────────────────────────
 # 🎮 Gaming
 # ────────────────────────────────
@@ -125,8 +134,14 @@ yay -S --noconfirm heroic-games-launcher minecraft-launcher bottles
 # 📡 Comunicación
 # ────────────────────────────────
 echo "📡 Instalando comunicación y control..."
-sudo pacman -S --noconfirm discord kdeconnect
+sudo pacman -S --noconfirm discord kdeconnect scrcpy
 yay -S --noconfirm vencord-desktop-bin
+
+# ────────────────────────────────
+# 🔐 Seguridad / Contraseñas
+# ────────────────────────────────
+echo "🔐 Instalando KeePassXC..."
+sudo pacman -S --noconfirm keepassxc
 
 # ────────────────────────────────
 # 🎨 Drivers tablet
@@ -191,6 +206,10 @@ bind = Super+Ctrl, Y, exec, Youtube-music
 bind = Super+Ctrl, F, exec, Fastfetch
 bind = Super+Ctrl, C, exec, flatpak run cloud.affine.APP
 bind = Super+Ctrl, A, exec, Shiru
+bind = Super+Ctrl, G, exec, keepassxc
+bind = Super+Ctrl, R, exec, Stremio
+bind = Super+Ctrl, P, exec, scrcpy
+bind = Super+Ctrl, N, exec, flatpak run info.febvre.Komikku
 EOF
 
 # ────────────────────────────────
