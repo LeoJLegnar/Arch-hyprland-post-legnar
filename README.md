@@ -26,10 +26,6 @@ Este script automatiza la configuración inicial de una instalación limpia de A
 - Teclado inglés con ñ
 - Dotfiles de End-4
 - Atajos personalizados SUPER+CTRL+[letra]
-- Script **secundario** para optimizaciones avanzadas (CPU, GPU, SSD, RAM, gaming)
-
-👉 Consulta el README del script de optimización aquí:  
-[📘 optimizaciones.md](./optimizaciones.md)
 
 ---
 
