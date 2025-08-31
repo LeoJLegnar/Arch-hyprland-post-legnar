@@ -38,7 +38,8 @@ cat <<'EOF'
   --------------------------------------
   - Este script está diseñado para uso
     personal en una instalación mínima
-    de Arch Linux con entorno de escritorio.
+    de Arch Linux con entorno de
+    escritorio hyprland.
   - Hará cambios importantes en tu sistema.
   - Instalará programas, y sobreescribirá
          configuraciones.
@@ -215,8 +216,7 @@ EOF
 # ────────────────────────────────
 # 🖥️ Display Manager
 # ────────────────────────────────
-echo "🖥️ Instalando y activando SDDM..."
-sudo pacman -S --noconfirm sddm
-sudo systemctl enable sddm
+echo "🖥️ Instalando tema a SDDM..."
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/keyitdev/sddm-astronaut-theme/master/setup.sh)"
 
 echo "✅ Script completado con éxito. Reinicia tu sistema para aplicar todos los cambios."
