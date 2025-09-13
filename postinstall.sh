@@ -153,8 +153,8 @@ yay -S --noconfirm xencelabs-driver
 # ────────────────────────────────
 # 📝 Apps extra
 # ────────────────────────────────
-echo "📝 Instalando AFFiNE..."
-flatpak install -y flathub cloud.affine.APP
+echo "📝 Instalando Obsidian..."
+flatpak install -y flathub md.obsidian.Obsidian
 
 # ────────────────────────────────
 # 📊 Herramientas de sistema
@@ -205,7 +205,7 @@ bind = Super+Ctrl, T, exec, Bottles
 bind = Super+Ctrl, D, exec, Discord
 bind = Super+Ctrl, Y, exec, Youtube-music
 bind = Super+Ctrl, F, exec, Fastfetch
-bind = Super+Ctrl, C, exec, flatpak run cloud.affine.APP
+bind = Super+Ctrl, O, exec, flatpak run md.obsidian.Obsidian
 bind = Super+Ctrl, A, exec, Shiru
 bind = Super+Ctrl, G, exec, keepassxc
 bind = Super+Ctrl, R, exec, Stremio
