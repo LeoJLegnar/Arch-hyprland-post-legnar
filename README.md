@@ -14,7 +14,7 @@ Este script automatiza la configuración inicial de una instalación limpia de A
 - Gaming: Steam, Heroic, Minecraft Launcher, Lutris, Bottles
 - Sistema: Htop, Btop, Fastfetch, KDE Connect, Scrcpy
 - Comunicación: Discord + Vencord
-- Productividad: AFFiNE
+- Productividad: Obsidian
 - Drivers de Xencelabs
 - seguridad: KeePass
 
@@ -73,7 +73,7 @@ Todos los atajos usan la combinación `SUPER + CTRL + [Letra]` para abrir rápid
 | SUPER + CTRL + Y   | YouTube Music             |
 | SUPER + CTRL + V   | VLC                       |
 | SUPER + CTRL + F   | Fastfetch                 |
-| SUPER + CTRL + C   | AFFiNE (Flatpak)          |
+| SUPER + CTRL + C   | Obsidian (Flatpak) |
 | SUPER + CTRL + A   | Shiru                     |
 | SUPER + CTRL + G   | KeePass                   |
 | SUPER + CTRL + R   | Stremio                   |
